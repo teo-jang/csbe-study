@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "csbe-study"
+version = "0.1.0"
+description = ""
+authors = ["teo-jang <torisdream@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+uvicorn = {extras = ["standard"], version = "^0.30.0"}
+sqlalchemy = "^2.0.30"
+pillow = "^10.3.0"
+pymysql = "^1.1.1"
+aiomysql = "^0.2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+pre-commit = "^3.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

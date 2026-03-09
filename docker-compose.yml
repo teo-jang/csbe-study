@@ -15,3 +15,25 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
+
+  redis:
+    image: redis:7
+    container_name: csbe-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+
+  # Ch.22 - 컨테이너: FastAPI 앱을 Docker로 띄울 수 있다
+  # docker compose --profile app up -d 로 실행
+  app:
+    build: .
+    container_name: csbe-app
+    ports:
+      - "8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    profiles:
+      - app
